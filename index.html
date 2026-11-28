@@ -1,58 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QUIZORA — Beyond Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0d1c;--card:rgba(22,25,48,.82);--ink:#f2f2ff;--muted:#a6a9c7;--violet:#9b7bff;--violet2:#7655e8;--mint:#48ead7;--pink:#f0a6ff;--line:rgba(174,164,255,.19);--soft:rgba(139,108,255,.14);--green:#55e6ad;--red:#ff7d9a;--shadow:0 22px 70px rgba(0,0,0,.32)}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,rgba(111,76,205,.22),transparent 36%),radial-gradient(ellipse at 90% 12%,rgba(53,224,208,.12),transparent 30%),linear-gradient(145deg,#090b18,#11142a 55%,#0b1020);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;background-image:radial-gradient(#a99aff 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
-header{position:sticky;top:0;z-index:5;background:rgba(10,12,27,.78);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);color:white;padding:15px max(22px,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:850;font-size:22px;letter-spacing:-.7px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--violet),var(--mint));display:grid;place-items:center;color:#111327;font-size:23px;box-shadow:0 0 28px #8b5cf655}.brand small{display:block;font-size:10px;color:#b8b4e7;font-weight:650;letter-spacing:1.7px}.header-right{font-size:12px;background:#ffffff0c;border:1px solid var(--line);padding:8px 12px;border-radius:30px;color:#c7c8e4}
-main{max-width:1180px;margin:36px auto;padding:0 20px}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:25px;padding:26px 28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(120deg,rgba(139,92,246,.13),rgba(53,224,208,.055));box-shadow:var(--shadow)}.eyebrow{color:var(--mint);font-size:11px;font-weight:850;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(29px,4vw,45px);line-height:1.12;margin:9px 0 10px;letter-spacing:-1.5px}.hero h1 span{background:linear-gradient(90deg,var(--violet),var(--mint),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent!important}.hero p{margin:0;color:var(--muted);max-width:700px}.pill{white-space:nowrap;background:linear-gradient(110deg,#8b5cf62a,#35e0d01c);color:#d7d1ff;border:1px solid #a58bff44;border-radius:30px;padding:8px 13px;font-size:12px;font-weight:750}
-.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}.card{background:linear-gradient(145deg,rgba(26,29,56,.92),rgba(18,21,43,.92));border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:var(--shadow);backdrop-filter:blur(16px)}.card h2{font-size:18px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
-label{display:block;font-size:13px;font-weight:750;margin:14px 0 7px;color:#dedcff}input,select,textarea{width:100%;border:1px solid #aaa0ff33;border-radius:12px;padding:12px 13px;font:inherit;color:var(--ink);background:#101329;outline:none}input::placeholder,textarea::placeholder{color:#777c9f}input:focus,select:focus,textarea:focus{border-color:var(--violet);box-shadow:0 0 0 3px #8b5cf622}select option{background:#171a35;color:white}textarea{min-height:100px;resize:vertical}.source-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.tab{border:1px solid var(--line);background:#ffffff08;padding:9px 12px;border-radius:10px;color:#c2c3df;cursor:pointer;font-weight:700;font-size:12px}.tab.active{background:linear-gradient(120deg,#8b5cf633,#35e0d01a);border-color:#a58bff88;color:#fff}.hint{font-size:11px;color:#9298bd;margin-top:7px}.btn{border:1px solid #b8a5ff55;border-radius:12px;background:linear-gradient(110deg,#8b5cf6,#6e63dc 58%,#27bcae);color:white;padding:12px 17px;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 8px 25px #7758dc30}.btn:hover{filter:brightness(1.12);transform:translateY(-2px);box-shadow:0 12px 30px #7758dc55}.btn.secondary{background:#ffffff0a;color:#d9d5ff;border-color:var(--line);box-shadow:none}.btn.full{width:100%;margin-top:17px}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}.marking-setting{display:flex;align-items:center;gap:12px;margin:16px 0 4px;padding:14px;border:1px solid var(--line);border-radius:13px;background:#ffffff06}.marking-setting input{width:19px;height:19px;flex:0 0 19px;margin:0;accent-color:var(--violet)}.marking-setting label{margin:0;cursor:pointer}.marking-setting small{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:3px}.feature{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.feature:last-child{border:0}.ico{width:37px;height:37px;flex:0 0 37px;border-radius:12px;background:linear-gradient(135deg,#8b5cf633,#35e0d01c);border:1px solid #a58bff30;color:var(--mint);display:grid;place-items:center;font-weight:900}.feature b{display:block;font-size:13px}.feature span{color:var(--muted);font-size:12px}
-.notice{margin-top:17px;padding:12px 13px;border-radius:12px;background:#8b5cf614;border:1px solid #a58bff40;color:#d2ccff;font-size:12px}.notice b{color:var(--mint)}
-#exam,#result{display:none;margin-top:20px}.examtop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.progress{height:7px;background:#ffffff12;border-radius:20px;overflow:hidden;margin:15px 0}.progress div{height:100%;background:linear-gradient(90deg,var(--violet),var(--mint));width:0%;transition:.2s}.qmeta{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:12px}.tag{background:#8b5cf61c;color:#d7ceff;border:1px solid #a58bff30;border-radius:20px;padding:4px 9px;font-weight:750}.question{font-size:19px;font-weight:750;margin:20px 0}.options{display:grid;gap:10px}.option{padding:13px 15px;border:1px solid var(--line);border-radius:12px;cursor:pointer;display:flex;gap:11px;align-items:center;background:#ffffff05}.option:hover{border-color:#8b7cff;background:#8b5cf610}.option.selected{border-color:var(--violet);background:#8b5cf626}.letter{width:26px;height:26px;border-radius:8px;background:#ffffff12;display:grid;place-items:center;font-weight:850;font-size:12px;color:var(--mint)}.examnav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.resultgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.metric{background:linear-gradient(135deg,#8b5cf617,#35e0d00a);border:1px solid var(--line);border-radius:13px;padding:15px}.metric strong{display:block;font-size:25px;color:var(--mint)}.metric span{font-size:11px;color:var(--muted)}.review{border:1px solid var(--line);border-radius:13px;padding:15px;margin:12px 0;background:#ffffff04}.review h3{font-size:14px;margin:0 0 10px}.correct{color:var(--green);font-weight:750}.wrong{color:var(--red);font-weight:750}.explain{background:#35e0d00b;border:1px solid #35e0d022;border-radius:10px;padding:11px;margin-top:10px;font-size:13px;color:#c6d7df}.footer{text-align:center;color:#777d9f;font-size:11px;padding:25px 10px}
-@media(max-width:800px){.resultgrid{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}.hero{display:block;padding:21px}.pill{display:inline-block;margin-top:12px}.card{padding:18px}}@media(max-width:480px){.resultgrid{grid-template-columns:repeat(2,1fr)}header{padding:13px 16px}.header-right{display:none}.two{grid-template-columns:1fr}.resultgrid{grid-template-columns:1fr 1fr}.question{font-size:17px}}
+@property --a{syntax:"<color>";inherits:true;initial-value:#3df2e0}@property --b{syntax:"<color>";inherits:true;initial-value:#9b7bff}@property --o1{syntax:"<color>";inherits:true;initial-value:#6d4aff}@property --o2{syntax:"<color>";inherits:true;initial-value:#00d9c5}@property --o3{syntax:"<color>";inherits:true;initial-value:#ff4fd0}@property --bgc{syntax:"<color>";inherits:true;initial-value:#070914}
+:root{--a:#3df2e0;--b:#9b7bff;--o1:#6d4aff;--o2:#00d9c5;--o3:#ff4fd0;--bgc:#070914;--ink:#eef1ff;--muted:#9aa3c7;--pink:#ff6bd6;--line:rgba(130,150,255,.22);--green:#4dffb0;--red:#ff6b8b;--glass:rgba(16,20,44,.62)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:var(--bgc);transition:--a 1.1s,--b 1.1s,--o1 1.4s,--o2 1.4s,--o3 1.4s,--bgc 1.4s;color:var(--ink);font:15px/1.6 "Hind Siliguri",Inter,system-ui,sans-serif;overflow-x:hidden}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.38;z-index:0;pointer-events:none;animation:float 16s ease-in-out infinite}
+.o1{width:420px;height:420px;background:var(--o1);top:-120px;left:-100px}.o2{width:360px;height:360px;background:var(--o2);bottom:-100px;right:-80px;animation-delay:-6s}.o3{width:260px;height:260px;background:var(--o3);top:40%;left:55%;opacity:.16;animation-delay:-11s}
+@keyframes float{50%{transform:translate(50px,-40px) scale(1.12)}}
+body:before{content:"";position:fixed;inset:-50% -50% 0;z-index:0;pointer-events:none;background-image:linear-gradient(color-mix(in srgb,var(--a) 16%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--a) 16%,transparent) 1px,transparent 1px);background-size:48px 48px;transform:perspective(500px) rotateX(62deg);transform-origin:top;animation:grid 5s linear infinite;mask-image:linear-gradient(#000 10%,transparent 70%)}
+@keyframes grid{to{background-position:0 48px}}
+header,main,.footer{position:relative;z-index:2}
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:14px max(20px,calc((100% - 1080px)/2));background:rgba(7,9,20,.7);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font:800 20px Orbitron,sans-serif;letter-spacing:1px}
+.logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 0deg,var(--b),var(--a),var(--pink),var(--b));display:grid;place-items:center;animation:spin 8s linear infinite;box-shadow:0 0 26px #7c5cff77}
+.logo i{width:32px;height:32px;border-radius:9px;background:#0a0d20;display:grid;place-items:center;font-style:normal;color:var(--a);animation:spin 8s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.brand small{display:block;font:500 9px Hind Siliguri;letter-spacing:2px;color:var(--muted)}
+.chip{font-size:12px;padding:7px 13px;border:1px solid var(--line);border-radius:30px;background:#ffffff0a;color:#c9d0f5}
+main{max-width:1080px;margin:0 auto;padding:30px 18px 10px}
+.hero{text-align:center;margin-bottom:26px}
+.hero h1{font:800 clamp(28px,5.5vw,52px)/1.15 Orbitron,"Hind Siliguri",sans-serif;margin:0 0 12px;letter-spacing:-1px;background:linear-gradient(90deg,#fff 0%,var(--b) 35%,var(--a) 70%,var(--pink) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.hero p{margin:0 auto;max-width:640px;color:var(--muted)}
+.card{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:26px;backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 #ffffff14}
+.card:after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(120deg,transparent 30%,var(--a),var(--b),transparent 70%);background-size:300% 100%;animation:edge 5s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.7}
+@keyframes edge{to{background-position:-300% 0}}
+/* wizard */
+.steps{display:flex;gap:6px;margin-bottom:6px}
+.steps b{flex:1;height:4px;border-radius:4px;background:#ffffff14;cursor:pointer;position:relative;overflow:hidden}
+.steps b:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--b),var(--a));transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.steps b.done:before,.steps b.on:before{transform:scaleX(1)}.steps b.on{box-shadow:0 0 12px var(--a)}
+.stephead{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:14px}
+.stage{perspective:1100px;display:grid;overflow:hidden;touch-action:pan-y;padding:4px}
+.slide{grid-area:1/1;transition:transform .75s cubic-bezier(.2,.9,.2,1),opacity .55s,filter .55s;opacity:0;pointer-events:none;filter:blur(8px);visibility:hidden}
+.slide.active{opacity:1;pointer-events:auto;filter:none;visibility:visible}
+
+.slide h2{font-size:clamp(21px,3.4vw,28px);margin:0 0 4px}
+.slide .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+
+.slide.active .choice:nth-child(2){animation-delay:.06s}.slide.active .choice:nth-child(3){animation-delay:.12s}.slide.active .choice:nth-child(4){animation-delay:.18s}.slide.active .choice:nth-child(5){animation-delay:.24s}.slide.active .choice:nth-child(6){animation-delay:.3s}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.92)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.grid.sm{grid-template-columns:repeat(auto-fit,minmax(90px,1fr))}
+.choice{position:relative;overflow:hidden;padding:16px 14px;border:1px solid var(--line);border-radius:16px;background:#ffffff08;color:var(--ink);cursor:pointer;text-align:left;font:inherit;transition:.25s}
+.choice .ic{font-size:24px;display:block;margin-bottom:6px}.choice b{display:block;font-size:15px}.choice small{color:var(--muted);font-size:12px}
+.choice:hover{transform:translateY(-4px);border-color:#8f9dff;box-shadow:0 10px 30px #6d4aff30}
+.choice.sel{border-color:var(--a);background:linear-gradient(135deg,#7c5cff30,#3df2e022);box-shadow:0 0 0 1px var(--a),0 0 28px #3df2e03a}
+.choice.sel:after{content:"✓";position:absolute;top:8px;right:10px;color:var(--a);font-weight:800}
+.choice.num{text-align:center;font:700 22px Orbitron,sans-serif;padding:20px 8px}
+label{display:block;font-size:13px;font-weight:600;margin:16px 0 7px;color:#d7dcff}
+input,textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:13px 14px;font:inherit;color:var(--ink);background:#0a0d22;outline:none;transition:.2s}
+input:focus,textarea:focus{border-color:var(--a);box-shadow:0 0 0 3px #3df2e01f}
+textarea{min-height:110px;resize:vertical}.hint{font-size:12px;color:#8089b3;margin-top:7px}
+.srcbox{margin-top:6px;animation:pop .4s both}
+.toggle{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;background:#ffffff08;cursor:pointer}
+.toggle input{display:none}.sw{width:52px;height:28px;border-radius:20px;background:#ffffff1c;position:relative;flex:0 0 52px;transition:.3s}
+.sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.3s}
+.toggle input:checked+.sw{background:linear-gradient(90deg,var(--b),var(--a));box-shadow:0 0 18px #3df2e055}.toggle input:checked+.sw:after{transform:translateX(24px)}
+.toggle b{display:block}.toggle small{color:var(--muted);font-size:12px}
+.summary{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 2px}.summary span{font-size:12px;padding:5px 11px;border-radius:20px;border:1px solid var(--line);background:#ffffff0a;color:#cfd6ff}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.btn{border:1px solid #b8a5ff55;border-radius:14px;background:linear-gradient(110deg,#7c5cff,#5b6cf0 55%,#17c9b8);color:#fff;padding:13px 22px;font:700 15px "Hind Siliguri",sans-serif;cursor:pointer;transition:.25s;box-shadow:0 8px 28px #6d4aff40;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:0 14px 36px #6d4aff66}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.secondary{background:#ffffff0c;box-shadow:none;border-color:var(--line);color:#d9ddff}
+.btn.go{background:linear-gradient(110deg,#00d4b4,#3d7bff,#9b5cff);background-size:200% 100%;animation:shine 3s linear infinite;font-size:16px;padding:14px 26px}
+.notice{margin-top:18px;padding:12px 14px;border-radius:13px;background:#7c5cff14;border:1px solid #a58bff3a;color:#cdd3ff;font-size:12px}.notice b{color:var(--a)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px 0 6px}.tools span{font-size:12.5px;padding:8px 14px;border-radius:30px;border:1px solid var(--line);background:#ffffff08;color:#c3caf0}.tools i{font-style:normal;color:var(--a);margin-right:6px}
+/* exam */
+#exam,#result{display:none;margin-top:22px}
+.examtop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.eyebrow{color:var(--a);font-size:12px;font-weight:700;letter-spacing:1.5px}
+#exam h2,#result h2{margin:4px 0;font-size:20px}
+.pill{background:linear-gradient(110deg,#7c5cff2a,#3df2e01c);border:1px solid #a58bff44;border-radius:30px;padding:7px 14px;font:700 13px Orbitron,sans-serif;color:#dcd6ff}
+.pill.low{color:var(--red);border-color:var(--red);animation:blink 1s infinite}@keyframes blink{50%{opacity:.5}}
+.progress{height:6px;background:#ffffff14;border-radius:20px;overflow:hidden;margin:16px 0}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--b),var(--a));box-shadow:0 0 14px var(--a);transition:width .5s}
+.qmeta{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:12px}.tag{background:#7c5cff1f;border:1px solid #a58bff30;border-radius:20px;padding:4px 10px;font-weight:600;color:#ddd5ff}
+.qwrap.qin{animation:qin .5s both}@keyframes qin{from{opacity:0;transform:translateX(40px)}}
+.question{font-size:20px;font-weight:600;margin:20px 0}.options{display:grid;gap:10px}
+.option{width:100%;font:inherit;color:inherit;text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:14px;cursor:pointer;display:flex;gap:12px;align-items:center;background:#ffffff06;transition:.2s}
+.option:hover{border-color:#8f9dff;transform:translateX(5px);background:#7c5cff12}.option.selected{border-color:var(--a);background:#3df2e014;box-shadow:0 0 22px #3df2e02e}
+.letter{width:28px;height:28px;border-radius:9px;background:#ffffff14;display:grid;place-items:center;font:700 12px Orbitron,sans-serif;color:var(--a)}
+.examnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.resultgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.metric{background:linear-gradient(135deg,#7c5cff18,#3df2e00a);border:1px solid var(--line);border-radius:16px;padding:16px;animation:pop .6s both}
+.metric strong{display:block;font:800 25px Orbitron,sans-serif;color:var(--a)}.metric span{font-size:12px;color:var(--muted)}
+.review{border:1px solid var(--line);border-radius:14px;padding:15px;margin:12px 0;background:#ffffff05}.review h3{font-size:15px;margin:0 0 10px}
+.correct{color:var(--green);font-weight:700}.wrong{color:var(--red);font-weight:700}
+.explain{background:#3df2e00c;border:1px solid #3df2e026;border-radius:11px;padding:11px;margin-top:10px;font-size:13px;color:#cfe0e8}
+.footer{text-align:center;color:#6f77a0;font-size:11px;padding:26px 10px}
+@media(max-width:700px){.resultgrid{grid-template-columns:1fr 1fr}.card{padding:18px}.btn{padding:12px 16px}.chip{display:none}}
+@media(max-width:700px){main{padding:18px 12px 8px}.hero{margin-bottom:18px}.hero p{font-size:14px}.stage{padding:10px 2px}.grid{grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px}.choice{padding:13px 11px}.question{font-size:18px}.option{padding:12px}.examnav{flex-wrap:wrap}.examnav .btn{flex:1 1 28%}.resultgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:12px}.metric strong{font-size:21px}.brand{font-size:17px}.logo{width:36px;height:36px}}
+@media(max-width:380px){.resultgrid{grid-template-columns:1fr 1fr}.resultgrid .metric strong{font-size:18px}.steps{gap:4px}.card{padding:14px}.nav{gap:7px}.nav .btn{padding:10px 12px}}
+button:focus-visible,input:focus-visible,textarea:focus-visible,.option:focus-visible,.steps b:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+.option{user-select:none}
+#fx{width:100%;height:100%;}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.orb,#sym{display:none!important}}
+/* ===== v2: per-slide themes, spotlight, sound, symbols ===== */
+#sym{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+#sym span{position:absolute;bottom:-60px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;color:var(--a);font-family:Orbitron,"Hind Siliguri",sans-serif;text-shadow:0 0 14px var(--a);animation:rise linear infinite;opacity:0;padding:7px 9px;border:1px solid transparent;border-radius:14px;transition:color .2s,text-shadow .2s,background .2s,border-color .2s}
+#sym span:hover{opacity:.9!important;border-color:color-mix(in srgb,var(--a) 45%,transparent);background:color-mix(in srgb,var(--a) 10%,transparent)}
+#sym span.dragging{animation:none!important;opacity:.95!important;cursor:grabbing;z-index:5;border-color:var(--a);background:color-mix(in srgb,var(--a) 16%,#080b1d);box-shadow:0 0 24px color-mix(in srgb,var(--a) 45%,transparent);transform:scale(1.12)}
+#sym span.tapped{opacity:.9!important;color:#fff;text-shadow:0 0 8px var(--a),0 0 24px var(--a);background:color-mix(in srgb,var(--a) 16%,transparent)}
+#sym span.out{opacity:0!important;transition:opacity .8s}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.24}90%{opacity:.18}100%{transform:translateY(-115vh) rotate(260deg);opacity:0}}
+.chip.snd{display:inline-block;cursor:pointer;font-family:inherit}.chip.snd:hover{border-color:var(--a);color:#fff}
+#wizard{transition:border-radius .9s}
+body[data-t="1"] #wizard{border-radius:10px}body[data-t="2"] #wizard{border-radius:44px}body[data-t="3"] #wizard{border-radius:30px 30px 30px 6px}body[data-t="4"] #wizard{border-radius:4px}body[data-t="5"] #wizard{border-radius:6px 36px 6px 36px}body[data-t="6"] #wizard{border-radius:36px}body[data-t="7"] #wizard{border-radius:28px 6px 28px 6px}
+.slide{position:relative;z-index:1;--af:translateX(70%) rotateY(-35deg) scale(.82);--bf:translateX(-70%) rotateY(35deg) scale(.82);transform:var(--af)}
+.slide.before{transform:var(--bf)}.slide.active{transform:none}
+.t2{--af:translateY(65%) rotateX(-45deg) scale(.8);--bf:translateY(-65%) rotateX(45deg) scale(.8)}
+.t3{--af:scale(.4) rotate(10deg);--bf:scale(1.6) rotate(-10deg)}
+.t4{--af:translateY(-65%) rotateX(45deg) scale(.8);--bf:translateY(65%) rotateX(-45deg) scale(.8)}
+.t5{--af:translateX(80%) skewX(-18deg) scale(.85);--bf:translateX(-80%) skewX(18deg) scale(.85)}
+.t6{--af:rotate(-90deg) scale(.4);--bf:rotate(90deg) scale(.4)}
+.t7{--af:translateZ(-400px) rotateY(80deg);--bf:translateZ(-400px) rotateY(-80deg)}
+.t8{--af:scale(.3) translateY(40%);--bf:scale(.3)}
+.slide.active .choice{animation:pop .55s backwards}
+.slide h2 .ch{display:inline-block}
+.slide.active h2 .ch{animation:chin .7s cubic-bezier(.2,.9,.2,1) backwards;animation-delay:calc(var(--i)*110ms + .15s)}
+@keyframes chin{from{opacity:0;transform:translateY(22px);filter:blur(6px)}}
+.stage{position:relative;padding:16px 10px}
+#spot{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity .45s}#spot.on{opacity:1}
+#cone,#pool,#lamp{position:absolute;transition:left .5s cubic-bezier(.2,.9,.2,1),top .5s cubic-bezier(.2,.9,.2,1),height .5s,width .5s}
+#cone{top:0;left:var(--x);height:var(--y);width:calc(var(--w) + 140px);transform:translateX(-50%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);background:linear-gradient(to bottom,transparent,color-mix(in srgb,var(--a) 38%,transparent));filter:blur(7px);animation:flick 3.2s ease-in-out infinite}
+#pool{left:var(--x);top:var(--y);width:calc(var(--w)*2);height:calc(var(--h)*3.4);transform:translate(-50%,-50%);background:radial-gradient(closest-side,color-mix(in srgb,var(--a) 46%,transparent),transparent)}
+#lamp{top:0;left:var(--x);width:90px;height:5px;transform:translateX(-50%);border-radius:5px;background:var(--a);box-shadow:0 0 22px 6px var(--a)}
+@keyframes flick{50%{opacity:.72}}
+.choice{will-change:transform}.choice:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.26),transparent 55%);opacity:0;transition:opacity .3s}
+.choice.lit:before{opacity:1}
+.choice.lit{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-7px) scale(1.05);border-color:var(--a);background:color-mix(in srgb,var(--a) 15%,transparent);box-shadow:0 0 0 1px var(--a),0 14px 40px color-mix(in srgb,var(--a) 40%,transparent);transition:transform .12s,box-shadow .3s,background .3s,border-color .3s,opacity .3s;z-index:2}
+.grid.spot .choice:not(.lit):not(.sel){opacity:.5;filter:saturate(.6)}
+.btn.lit{transform:translateY(-3px) scale(1.03);box-shadow:0 0 36px color-mix(in srgb,var(--a) 70%,transparent)}
+input.lit,textarea.lit{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 24%,transparent),0 0 30px color-mix(in srgb,var(--a) 30%,transparent)}
+.t1 .choice{border-radius:6px;border:1px dashed color-mix(in srgb,var(--a) 60%,transparent);background:linear-gradient(color-mix(in srgb,var(--a) 9%,transparent) 1px,transparent 1px) 0 0/100% 14px,#ffffff06;font-family:"Courier New","Hind Siliguri",monospace}
+.t2 .choice{border-radius:50px;text-align:center;padding:18px 20px}
+.t3 .choice{border-radius:26px 26px 26px 6px}
+.t4 .choice{border-radius:2px;border-left:4px solid var(--a);font-family:"Courier New","Hind Siliguri",monospace}
+.t5 .choice{border-radius:4px 24px 4px 24px;border-color:color-mix(in srgb,var(--a) 50%,transparent)}
+.t6 .choice.num{border-radius:50%;aspect-ratio:1;display:grid;place-items:center;padding:0;font-size:24px}
+.t7 .choice{border-radius:22px;box-shadow:inset 0 0 34px color-mix(in srgb,var(--b) 20%,transparent)}
+.t4 h2,.t1 h2{font-family:"Courier New","Hind Siliguri",monospace}.t6 h2,.t0 h2,.t8 h2{font-family:Orbitron,"Hind Siliguri",sans-serif}
+.sp{position:fixed;width:7px;height:7px;border-radius:50%;pointer-events:none;z-index:50;animation:spark .8s cubic-bezier(.1,.8,.3,1) forwards;box-shadow:0 0 10px currentColor}
+@keyframes spark{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+.ring{position:fixed;width:20px;height:20px;margin:-10px;border-radius:50%;border:2px solid var(--a);pointer-events:none;z-index:50;animation:ring .7s ease-out forwards}
+@keyframes ring{to{transform:scale(6);opacity:0}}
+[lang=hi]{font-family:"Noto Sans Devanagari","Hind Siliguri",sans-serif}[lang=ur]{font-family:"Noto Nastaliq Urdu","Hind Siliguri",serif}
+.choice b[lang=ur]{line-height:1.9}#qwrap[lang=ur],#reviews[lang=ur]{line-height:2.1}
+[dir=rtl] .option:hover{transform:translateX(-5px)}[dir=rtl] .review,[dir=rtl] .explain{text-align:right}
+.nat{unicode-bidi:plaintext}h2 .nat{display:block;font-size:.66em;font-weight:500;color:var(--muted);margin-top:2px}.sub .nat,.btn .nat,.toggle .nat{color:#b9c2ff}
 </style></head>
 <body>
-<header><div class="brand"><div class="logo">✦</div><div>QUIZORA<small>BEYOND LEARNING · AI EXAM STUDIO</small></div></div><div class="header-right">✦ NEBULA WORKSPACE</div></header>
+<canvas id="fx"></canvas><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div id="sym"></div>
+<header><div class="brand"><div class="logo"><i>✦</i></div><div>QUIZORA<small>BEYOND LEARNING · AI EXAM STUDIO</small></div></div><div style="display:flex;gap:8px"><div class="chip" id="langChip">বাংলা</div><button class="chip snd" id="soundBtn">🔊 Sound</button></div></header>
 <main>
-<section class="hero"><div><div class="eyebrow">Your personal AI exam partner</div><h1>Learn it. Test it. <span>Master it.</span></h1><p>ক্লাসের কনটেন্ট থেকে Topic-wise MCQ পরীক্ষা, তাৎক্ষণিক ফলাফল এবং প্রতিটি উত্তরের ব্যাখ্যা—এক জায়গায়।</p></div><div class="pill">বাংলা + English</div></section>
-<div class="layout">
-<section class="card">
-<h2>নতুন পরীক্ষা তৈরি করো</h2><p class="sub">ক্লাসের লিংক, PDF অথবা Transcript দিয়ে শুরু করো।</p>
-<label>কনটেন্টের উৎস</label><div class="source-tabs"><button class="tab active" data-tab="link">🔗 Class link</button><button class="tab" data-tab="pdf">📄 PDF</button><button class="tab" data-tab="text">✍ Transcript / Notes</button></div>
-<div id="linkBox"><label>ক্লাসের URL</label><input id="classUrl" placeholder="YouTube / Facebook / Google Drive link paste করো"><div class="hint">YouTube, Facebook ও Google Drive লিংক সমর্থনের জন্য backend connector প্রয়োজন।</div></div>
-<div id="pdfBox" style="display:none"><label>PDF ফাইল নির্বাচন</label><input type="file" id="pdfFile" accept="application/pdf"><div class="hint">এই prototype ফাইল নির্বাচন দেখায়; PDF text extraction ও AI analysis backend-এ যুক্ত করতে হবে।</div></div>
-<div id="textBox" style="display:none"><label>Transcript / Class notes</label><textarea id="notes" placeholder="ক্লাসের transcript বা notes এখানে paste করো..."></textarea></div>
-<div class="two"><div><label>বিষয়</label><select id="subject"><option>Higher Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>ICT</option><option>Other</option></select></div><div><label>ভাষা</label><select id="language"><option>বাংলা + English</option><option>বাংলা</option><option>English</option></select></div></div>
-<label>Topic / Chapter (ঐচ্ছিক)</label><input id="topic" placeholder="যেমন: বিন্যাস ও সমাবেশ">
-<div class="two"><div><label>প্রশ্ন সংখ্যা</label><select id="count"><option>10</option><option selected>20</option><option>30</option><option>40</option><option>50</option></select></div><div><label>কঠিনতার মাত্রা</label><select id="level"><option>Mixed (Easy + Medium + Hard)</option><option>Easy</option><option>Medium</option><option>Hard</option></select></div></div>
-<div class="two"><div><label>সময় (মিনিট)</label><select id="duration"><option>10</option><option selected>20</option><option>30</option><option>45</option><option>60</option></select></div><div><label>প্রশ্নের ধরন</label><select id="qtype"><option>Concept + Calculation + Application</option><option>Conceptual</option><option>Calculation-based</option><option>Board-style MCQ</option></select></div></div>
-<div class="marking-setting"><input type="checkbox" id="negativeMarking" checked><label for="negativeMarking">Negative Marking <small>চালু থাকলে প্রতি ২টি ভুল উত্তরে ০.২৫ নম্বর কাটা হবে। বন্ধ করলে ভুল উত্তরে নম্বর কাটবে না।</small></label></div>
-<button class="btn full" id="generate">✦ Generate a new practice exam</button>
-<div class="notice"><b>AI status:</b> PDF ও pasted notes থেকে AI প্রশ্ন তৈরির জন্য backend চালু থাকতে হবে এবং server-এ API key সেট করতে হবে। YouTube/Facebook/Drive-এর সরাসরি link extraction এখনো connector হিসেবে যুক্ত হয়নি।</div>
+<section class="hero"><h1>Learn it. Test it. Master it.</h1><p>ক্লাসের কনটেন্ট থেকে Topic-wise MCQ পরীক্ষা, তাৎক্ষণিক ফলাফল এবং প্রতিটি উত্তরের ব্যাখ্যা। স্লাইড ধরে ধরে অপশন বেছে নাও।</p></section>
+
+<section class="card" id="wizard">
+<div class="steps" id="steps"></div>
+<div class="stephead"><span id="stepName"></span><span id="stepCount"></span></div>
+<div class="stage" id="stage" aria-live="polite"><div id="spot"><div id="cone"></div><div id="pool"></div><div id="lamp"></div></div>
+
+<div class="slide" data-name="ভাষা"><h2>ভাষা বেছে নাও · Choose Language</h2><p class="sub">প্রশ্ন ও ব্যাখ্যা এই ভাষায় তৈরি হবে।</p>
+<div class="grid" data-key="language"><button class="choice" data-v="Bangla"><span class="ic">অ</span><b>বাংলা</b><small>Bangla</small></button><button class="choice" data-v="English"><span class="ic">A</span><b>English</b><small>English</small></button><button class="choice" data-v="Hindi"><span class="ic" lang="hi">अ</span><b lang="hi">हिन्दी</b><small>Hindi</small></button><button class="choice" data-v="Urdu"><span class="ic" lang="ur">ا</span><b lang="ur">اردو</b><small>Urdu</small></button></div></div>
+
+<div class="slide" data-name="উৎস"><h2>কোথা থেকে প্রশ্ন বানাবো?</h2><p class="sub">ক্লাসের লিংক, PDF অথবা Transcript বেছে নাও।</p>
+<div class="grid" data-key="tab"><button class="choice" data-v="link"><span class="ic">🔗</span><b>Class link</b><small>YouTube / Facebook / Drive</small></button><button class="choice" data-v="pdf"><span class="ic">📄</span><b>PDF</b><small>ফাইল আপলোড</small></button><button class="choice" data-v="text"><span class="ic">✍</span><b>Transcript / Notes</b><small>paste করো</small></button></div>
+<div class="srcbox" id="linkBox"><label>ক্লাসের URL</label><input id="classUrl" placeholder="YouTube / Facebook / Google Drive link paste করো"><div class="hint">এই build-এ সরাসরি link import এখনো সক্রিয় নয়। Transcript copy করে Notes অপশন ব্যবহার করো।</div></div>
+<div class="srcbox" id="pdfBox" style="display:none"><label>PDF ফাইল নির্বাচন</label><input type="file" id="pdfFile" accept="application/pdf"><div class="hint">সর্বোচ্চ 15 MB। PDF extraction backend-এ চালানো হবে।</div></div>
+<div class="srcbox" id="textBox" style="display:none"><label>Transcript / Class notes</label><textarea id="notes" placeholder="ক্লাসের transcript বা notes এখানে paste করো..."></textarea></div></div>
+
+<div class="slide" data-name="বিষয়"><h2>কোন বিষয়?</h2><p class="sub">পরীক্ষার subject বেছে নাও।</p>
+<div class="grid" data-key="subject"><button class="choice" data-v="Higher Mathematics"><span class="ic">∑</span><b>Higher Mathematics</b></button><button class="choice" data-v="Physics"><span class="ic">⚛</span><b>Physics</b></button><button class="choice" data-v="Chemistry"><span class="ic">⚗</span><b>Chemistry</b></button><button class="choice" data-v="Biology"><span class="ic">🧬</span><b>Biology</b></button><button class="choice" data-v="ICT"><span class="ic">💻</span><b>ICT</b></button><button class="choice" data-v="Other"><span class="ic">✦</span><b>Other</b></button></div></div>
+
+<div class="slide" data-name="Topic"><h2>নির্দিষ্ট Topic আছে?</h2><p class="sub">ঐচ্ছিক। ফাঁকা রাখলে পুরো কনটেন্ট থেকে হবে।</p>
+<label for="topic">Topic / Chapter</label><input id="topic" placeholder="যেমন: বিন্যাস ও সমাবেশ"></div>
+
+<div class="slide" data-name="প্রশ্ন সংখ্যা"><h2>কয়টি প্রশ্ন?</h2><p class="sub">মোট MCQ সংখ্যা।</p>
+<div class="grid sm" data-key="count"><button class="choice num" data-v="10">10</button><button class="choice num" data-v="20">20</button><button class="choice num" data-v="30">30</button><button class="choice num" data-v="40">40</button><button class="choice num" data-v="50">50</button></div></div>
+
+<div class="slide" data-name="কঠিনতা"><h2>কঠিনতার মাত্রা</h2><p class="sub">কেমন চ্যালেঞ্জ চাও?</p>
+<div class="grid" data-key="level"><button class="choice" data-v="Mixed (Easy + Medium + Hard)"><span class="ic">⚡</span><b>Mixed</b><small>Easy + Medium + Hard</small></button><button class="choice" data-v="Easy"><span class="ic">🌱</span><b>Easy</b></button><button class="choice" data-v="Medium"><span class="ic">🔥</span><b>Medium</b></button><button class="choice" data-v="Hard"><span class="ic">💀</span><b>Hard</b></button></div></div>
+
+<div class="slide" data-name="সময়"><h2>কত মিনিট সময়?</h2><p class="sub">টাইমার এই সময় থেকে শুরু হবে।</p>
+<div class="grid sm" data-key="duration"><button class="choice num" data-v="10">10</button><button class="choice num" data-v="20">20</button><button class="choice num" data-v="30">30</button><button class="choice num" data-v="45">45</button><button class="choice num" data-v="60">60</button></div></div>
+
+<div class="slide" data-name="প্রশ্নের ধরন"><h2>প্রশ্নের ধরন</h2><p class="sub">কোন ধাঁচের প্রশ্ন চাও?</p>
+<div class="grid" data-key="qtype"><button class="choice" data-v="Concept + Calculation + Application"><span class="ic">🧩</span><b>Concept + Calculation + Application</b></button><button class="choice" data-v="Conceptual"><span class="ic">💡</span><b>Conceptual</b></button><button class="choice" data-v="Calculation-based"><span class="ic">🧮</span><b>Calculation-based</b></button><button class="choice" data-v="Board-style MCQ"><span class="ic">📘</span><b>Board-style MCQ</b></button></div></div>
+
+<div class="slide" data-name="চূড়ান্ত"><h2>সব প্রস্তুত 🚀</h2><p class="sub">Negative marking ঠিক করে পরীক্ষা শুরু করো।</p>
+<label class="toggle" for="negativeMarking"><input type="checkbox" id="negativeMarking" checked><span class="sw"></span><span><b>Negative Marking</b><small>প্রতি ভুল উত্তরে ০.২৫ নম্বর কাটা হবে। চূড়ান্ত স্কোর ০-এর নিচে যাবে না।</small></span></label>
+<div class="summary" id="summary"></div>
+<button class="btn go" id="generate" style="width:100%;margin-top:18px">✦ Generate a new practice exam</button></div>
+
+</div>
+<div class="nav"><button class="btn secondary" id="wPrev">← পিছনে</button><button class="btn" id="wNext">পরের ধাপ →</button></div>
+<div class="notice"><b>AI status:</b> PDF ও pasted notes থেকে AI প্রশ্ন তৈরির জন্য backend চালু থাকতে হবে এবং server-এ API key সেট করতে হবে। YouTube/Facebook/Drive-এর সরাসরি extraction এখনো connector হিসেবে যুক্ত হয়নি।</div>
 </section>
-<aside class="card">
-<h2>তোমার learning toolkit</h2><p class="sub">একটি ভালো পরীক্ষার জন্য যা যা দরকার।</p>
-<div class="feature"><div class="ico">✦</div><div><b>Fresh question sets</b><span>প্রতিবার আলাদা প্রশ্নের random set; একই প্রশ্ন বারবার এড়ানোর চেষ্টা।</span></div></div>
-<div class="feature"><div class="ico">◷</div><div><b>Timed examination</b><span>সময় ধরে পরীক্ষা দাও এবং যেকোনো প্রশ্নে ফিরে যাও।</span></div></div>
-<div class="feature"><div class="ico">✓</div><div><b>Instant result</b><span>Score, accuracy, correct ও incorrect count দেখো।</span></div></div>
-<div class="feature"><div class="ico">文</div><div><b>Step-by-step explanation</b><span>সঠিক উত্তর কেন সঠিক এবং ভুল অপশন কেন ভুল—ব্যাখ্যাসহ।</span></div></div>
-<div class="feature"><div class="ico">↗</div><div><b>Topic-wise improvement</b><span>কোন জায়গায় বেশি অনুশীলন দরকার তা শনাক্ত করো।</span></div></div>
-<div class="notice" style="background:#edf5ff;border-color:#d6e7ff;color:#31577f">Tip: PDF upload করো অথবা class transcript paste করে AI দিয়ে প্রশ্ন তৈরি করো।</div>
-</aside></div>
+
+<div class="tools"><span><i>✦</i>Fresh question sets</span><span><i>◷</i>Timed exam</span><span><i>✓</i>Instant result</span><span><i>文</i>Step-by-step explanation</span><span><i>↗</i>Topic-wise improvement</span></div>
+
 <section class="card" id="exam">
-<div class="examtop"><div><div class="eyebrow">Practice session</div><h2 id="examTitle">Higher Mathematics · Practice Exam</h2></div><div class="pill" id="timer">20:00 remaining</div></div>
-<div class="progress"><div id="bar"></div></div><div class="examtop"><div class="qmeta"><span class="tag" id="qnum">Question 1 / 20</span><span class="tag" id="difficulty">Medium</span></div><span class="qmeta" id="answered">0 answered</span></div>
-<div class="question" id="question"></div><div class="options" id="options"></div>
-<div class="examnav"><button class="btn secondary" id="prev">← Previous</button><button class="btn" id="next">Next →</button><button class="btn" id="finish" style="display:none;background:#12845b">Submit exam</button></div>
+<div class="examtop"><div><div class="eyebrow">PRACTICE SESSION</div><h2 id="examTitle"></h2></div><div class="pill" id="timer" role="timer" aria-live="off">20:00</div></div>
+<div class="progress"><div id="bar"></div></div>
+<div class="examtop"><div class="qmeta"><span class="tag" id="qnum"></span><span class="tag" id="difficulty"></span></div><span class="qmeta" id="answered" aria-live="polite"></span></div>
+<div class="qwrap" id="qwrap"><div class="question" id="question"></div><div class="options" id="options" role="group" aria-label="Answer choices"></div></div>
+<div class="examnav"><button class="btn secondary" id="prev">← Previous</button><button class="btn" id="next">Next →</button><button class="btn" id="finish" style="display:none;background:linear-gradient(110deg,#0fb37c,#17c9b8)">Submit exam</button></div>
 </section>
-<section class="card" id="result"><div class="eyebrow">Exam completed</div><h2>Your performance report</h2><p class="sub" id="resultMsg">চমৎকার চেষ্টা!</p><div class="resultgrid"><div class="metric"><strong id="score">0.00/0</strong><span>Final score</span></div><div class="metric"><strong id="accuracy">0%</strong><span>Accuracy</span></div><div class="metric"><strong id="correct">0</strong><span>Correct answers</span></div><div class="metric"><strong id="wrong">0</strong><span>Wrong answers</span></div><div class="metric"><strong id="unanswered">0</strong><span>Unanswered</span></div><div class="metric"><strong id="deduction">0.00</strong><span>Marks deducted</span></div></div><h2>Answer review & explanations</h2><div id="reviews"></div><button class="btn" id="retry">↻ Generate another fresh set</button></section>
-<div class="footer">QUIZORA · Beyond Learning · Built for curious minds.</div>
+
+<section class="card" id="result"><div class="eyebrow">EXAM COMPLETED</div><h2>Your performance report</h2><p class="sub" id="resultMsg" style="color:var(--muted)" aria-live="polite"></p>
+<div class="resultgrid"><div class="metric"><strong id="score">0</strong><span>Final score</span></div><div class="metric"><strong id="accuracy">0%</strong><span>Accuracy</span></div><div class="metric"><strong id="correct">0</strong><span>Correct answers</span></div><div class="metric"><strong id="wrong">0</strong><span>Wrong answers</span></div><div class="metric"><strong id="unanswered">0</strong><span>Unanswered</span></div><div class="metric"><strong id="deduction">0.00</strong><span>Marks deducted</span></div></div>
+<h2>Answer review &amp; explanations</h2><div id="reviews"></div><button class="btn" id="retry">↻ Generate another fresh set</button></section>
 </main>
+<div class="footer">QUIZORA · Beyond Learning · Built for curious minds.</div>
 <script>
 const bank=[
 {q:"১০ জন শিক্ষার্থী থেকে ৩ জনকে কতভাবে নির্বাচন করা যায়?",o:["১২০","৭২০","২৪০","৩০"],a:0,d:"Easy",e:"এখানে নির্বাচন, তাই ক্রম গুরুত্বপূর্ণ নয়। ¹⁰C₃ = 10!/(3!×7!) = (10×9×8)/(3×2×1) = 120।"},
@@ -60,45 +227,236 @@ const bank=[
 {q:"৮ জন থেকে সভাপতি ও সম্পাদক নির্বাচন করতে কত উপায়?",o:["২৮","৫৬","৬৪","১৬"],a:1,d:"Medium",e:"পদ দুটি আলাদা, তাই একই দুই ব্যক্তি পদ বদলালে আলাদা নির্বাচন। ⁸P₂ = 8×7 = 56।"},
 {q:"nটি ভিন্ন বস্তু থেকে rটি নিয়ে সাজানোর সংখ্যা কোনটি?",o:["nCr","nPr","n! + r!","nʳ"],a:1,d:"Easy",e:"বিন্যাসে ক্রম গুরুত্বপূর্ণ। nPr = n!/(n−r)!।"},
 {q:"৬ জনের মধ্য থেকে ২ জনের একটি কমিটি কতভাবে গঠন করা যায়?",o:["১২","১৫","৩০","৩৬"],a:1,d:"Easy",e:"কমিটিতে পদ বা ক্রম নেই। ⁶C₂ = 6!/(2!4!) = (6×5)/2 = 15।"},
-{q:"৭টি ভিন্ন অক্ষর থেকে ৩টি অক্ষর নিয়ে পুনরাবৃত্তি ছাড়া ৩-অক্ষরের কোড কত?",o:["২১০","৩৪৩","৫০৪","৭২০"],a:2,d:"Medium",e:"ক্রম গুরুত্বপূর্ণ এবং পুনরাবৃত্তি নেই। ⁷P₃ = 7×6×5 = 210। সঠিক অপশন ২১০।",fix:0},
+{q:"৭টি ভিন্ন অক্ষর থেকে ৩টি অক্ষর নিয়ে পুনরাবৃত্তি ছাড়া ৩-অক্ষরের কোড কত?",o:["২১০","৩৪৩","৫০৪","৭২০"],a:0,d:"Medium",e:"ক্রম গুরুত্বপূর্ণ এবং পুনরাবৃত্তি নেই। ⁷P₃ = 7×6×5 = 210।"},
 {q:"৪ জনকে এক সারিতে বসানোর মোট উপায় কত?",o:["৮","১২","১৬","২৪"],a:3,d:"Easy",e:"৪টি ভিন্ন ব্যক্তির সারিবিন্যাস 4! = 24।"},
 {q:"৯ জন থেকে ৪ জনের দল গঠন কতভাবে সম্ভব?",o:["১২৬","৩০২৪","৫০৪","৩৬"],a:0,d:"Medium",e:"দল গঠনে ক্রম গুরুত্বপূর্ণ নয়। ⁹C₄ = 9!/(4!5!) = 126।"},
 {q:"একটি ৫ অঙ্কের PIN-এ ০–৯ থেকে অঙ্ক নেওয়া যায় এবং পুনরাবৃত্তি অনুমোদিত। মোট PIN কত?",o:["১০,০০০","৫০,০০০","১,০০,০০০","৩,০২৪"],a:2,d:"Medium",e:"প্রতিটি স্থানে ১০টি করে পছন্দ, পুনরাবৃত্তি অনুমোদিত। মোট 10⁵ = 100,000।"},
 {q:"nCr এবং nC(n−r)-এর সম্পর্ক কী?",o:["সমান","একটির দ্বিগুণ","যোগফল n","সবসময় ভিন্ন"],a:0,d:"Medium",e:"nCr = n!/[r!(n−r)!]। হর-এর r! ও (n−r)! অদলবদল করলেও গুণফল অপরিবর্তিত, তাই nCr = nC(n−r)।"},
 {q:"৬টি ভিন্ন বস্তু থেকে ২টি নিয়ে সাজানোর সংখ্যা কত?",o:["১৫","৩০","৩৬","১২"],a:1,d:"Medium",e:"⁶P₂ = 6!/(6−2)! = 6×5 = 30।"},
 {q:"৫ জনের মধ্যে ১ জন নির্দিষ্ট ব্যক্তিকে অবশ্যই রেখে ৩ জনের কমিটি কতভাবে?",o:["৪","৬","১০","২০"],a:1,d:"Hard",e:"নির্দিষ্ট ব্যক্তি অন্তর্ভুক্ত। বাকি ৪ জন থেকে আরও ২ জন বেছে নিতে হবে: ⁴C₂ = 6।"},
-{q:"'LEVEL' শব্দের অক্ষরগুলো কতভাবে সাজানো যায়?",o:["১২০","৩০","৬০","২৪"],a:2,d:"Hard",e:"৫টি অক্ষরের মধ্যে L দুইবার এবং E দুইবার। ভিন্ন বিন্যাস = 5!/(2!×2!) = 30। সঠিক উত্তর ৩০।",fix:0},
+{q:"'LEVEL' শব্দের অক্ষরগুলো কতভাবে সাজানো যায়?",o:["১২০","৩০","৬০","২৪"],a:1,d:"Hard",e:"৫টি অক্ষরের মধ্যে L দুইবার এবং E দুইবার। ভিন্ন বিন্যাস = 5!/(2!×2!) = 30।"},
 {q:"৮ জনের মধ্যে থেকে ১ জন অধিনায়কসহ ৩ জনের দল কতভাবে নির্বাচন করা যায়?",o:["১৬৮","৫৬","৩৩৬","২৪"],a:0,d:"Hard",e:"প্রথমে অধিনায়ক ৮ভাবে। এরপর বাকি ৭ জন থেকে ২ জন: ⁷C₂ = 21। মোট 8×21 = 168।"}
 ];
-let activeTab="link",exam=[],answers={},idx=0,remaining=1200,clock=null,negativeMarkingEnabled=true;
 const $=id=>document.getElementById(id);
-document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");activeTab=b.dataset.tab;["link","pdf","text"].forEach(x=>$(x+"Box").style.display=x===activeTab?"block":"none")}));
-function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function makeExam(){negativeMarkingEnabled=$("negativeMarking").checked;let topic=$("topic").value.trim().toLowerCase();let pool=bank.filter(x=>!topic||topic.includes("বিন্যাস")||topic.includes("permutation")||topic.includes("combination")||topic.includes("সমাবেশ"));if(!pool.length)pool=bank;let n=+$("count").value;exam=[];while(exam.length<n){exam.push(...shuffle(pool).slice(0,Math.min(pool.length,n-exam.length)))}exam=exam.slice(0,n);answers={};idx=0;remaining=+$("duration").value*60;$("result").style.display="none";$("exam").style.display="block";$("examTitle").textContent=$("subject").value+" · "+($("topic").value||"Practice Exam");render();if(clock)clearInterval(clock);clock=setInterval(()=>{remaining--;timer();if(remaining<=0)finish()},1000);$("exam").scrollIntoView({behavior:"smooth"});}
-function timer(){$("timer").textContent=Math.floor(remaining/60)+":"+String(remaining%60).padStart(2,"0")}
-function render(){let q=exam[idx];$("qnum").textContent=`Question ${idx+1} / ${exam.length}`;$("difficulty").textContent=q.d;$("question").textContent=q.q;$("options").innerHTML="";q.o.forEach((v,i)=>{let d=document.createElement("div");d.className="option"+(answers[idx]===i?" selected":"");d.innerHTML=`<span class="letter">${"ABCD"[i]}</span><span></span>`;d.querySelector("span:last-child").textContent=v;d.onclick=()=>{answers[idx]=i;render()};$("options").appendChild(d)});$("answered").textContent=Object.keys(answers).length+" answered";$("bar").style.width=((idx+1)/exam.length*100)+"%";$("prev").disabled=idx===0;$("next").style.display=idx===exam.length-1?"none":"inline-block";$("finish").style.display=idx===exam.length-1?"inline-block":"none";timer()}
-$("prev").onclick=()=>{if(idx>0){idx--;render()}};$("next").onclick=()=>{if(idx<exam.length-1){idx++;render()}};$("finish").onclick=()=>finish();
-function finish(){if(!exam.length)return;clearInterval(clock);let correctCount=0,wrongCount=0,unansweredCount=0;exam.forEach((q,i)=>{if(answers[i]===undefined)unansweredCount++;else if(answers[i]===q.a)correctCount++;else wrongCount++});let deduction=negativeMarkingEnabled?wrongCount*0.125:0;let finalScore=correctCount-deduction;let pct=Math.round(correctCount/exam.length*100);$("score").textContent=finalScore.toFixed(2)+"/"+exam.length;$("accuracy").textContent=pct+"%";$("correct").textContent=correctCount;$("wrong").textContent=wrongCount;$("unanswered").textContent=unansweredCount;$("deduction").textContent=deduction.toFixed(2);$("resultMsg").textContent=pct>=80?"Excellent work! এভাবেই অনুশীলন চালিয়ে যাও।":pct>=60?"ভালো অগ্রগতি! ভুল প্রশ্নগুলোর ব্যাখ্যা দেখে আবার চেষ্টা করো।":"চিন্তা নেই—ব্যাখ্যাগুলো পড়ে একই Topic আবার অনুশীলন করো।";$("reviews").innerHTML="";exam.forEach((q,i)=>{let ok=answers[i]===q.a;let box=document.createElement("div");box.className="review";let h=document.createElement("h3");h.textContent=`${i+1}. ${q.q}`;let status=document.createElement("div");status.className=ok?"correct":"wrong";status.textContent=ok?"✓ Correct":"✕ Incorrect / Not answered";let yours=document.createElement("div");yours.textContent="তোমার উত্তর: "+(answers[i]===undefined?"দেওয়া হয়নি":q.o[answers[i]]);let right=document.createElement("div");right.innerHTML="<b>সঠিক উত্তর: </b>";right.append(document.createTextNode(q.o[q.a]));let exp=document.createElement("div");exp.className="explain";exp.textContent="ব্যাখ্যা: "+q.e;box.append(h,status,yours,right,exp);$("reviews").appendChild(box)});$("exam").style.display="none";$("result").style.display="block";$("result").scrollIntoView({behavior:"smooth"});}
+const cfg={tab:"link",subject:"Higher Mathematics",language:"Bangla",count:"20",level:"Mixed (Easy + Medium + Hard)",duration:"20",qtype:"Concept + Calculation + Application"};
+let exam=[],answers={},idx=0,remaining=1200,clock=null,deadline=0,negativeMarkingEnabled=true,cur=0,examFinished=false;
+
+/* ---------- wizard slides ---------- */
+const slides=[...document.querySelectorAll(".slide")],stepsEl=$("steps");
+slides.forEach((s,i)=>{const b=document.createElement("b");b.tabIndex=0;b.setAttribute("role","button");b.setAttribute("aria-label",`Go to setup step ${i+1}: ${s.dataset.name}`);b.onclick=()=>go(i);b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go(i)}};stepsEl.appendChild(b)});
+function summary(){const t=$("topic").value.trim();$("summary").innerHTML="";[cfg.tab==="link"?"🔗 Link":cfg.tab==="pdf"?"📄 PDF":"✍ Notes",cfg.subject,cfg.language,t||"All topics",cfg.count+" Qs",cfg.level.split(" ")[0],cfg.duration+" min",cfg.qtype.split(" ")[0]].forEach(x=>{const s=document.createElement("span");s.textContent=x;$("summary").appendChild(s)})}
+
+const stage=$("stage");
+/* ---------- themes ---------- */
+const TH=[
+{a:"#3df2e0",b:"#9b7bff",o1:"#6d4aff",o2:"#00d9c5",o3:"#ff4fd0",bg:"#070914",icon:"🚀",tag:"Start your learning mission",sym:["✦","{ }","</>","01","AI","⌘"]},
+{a:"#66b8ff",b:"#4f7cff",o1:"#1c4fd8",o2:"#009bff",o3:"#7aa8ff",bg:"#050c1e",icon:"📐",tag:"Numbers, formulas, discovery",sym:["∑","π","∫","√","Δ","∞","x²","H₂O","DNA","E=mc²"]},
+{a:"#5dffb0",b:"#2fd2ff",o1:"#0fa37a",o2:"#1b7bd8",o3:"#8affc7",bg:"#04120f",icon:"🌐",tag:"ভাষা চিন্তাকে প্রসারিত করে",sym:["অ","আ","A","B","ক","খ","Z","ই"]},
+{a:"#ffb45e",b:"#ff6b9d",o1:"#ff6a3d",o2:"#d63384",o3:"#ffd166",bg:"#170a10",icon:"📖",tag:"Focus brings mastery",sym:["?","!","✎","¶","💡","“ ”"]},
+{a:"#57ff7a",b:"#b6ff3d",o1:"#0a8f2e",o2:"#5fd800",o3:"#00ff9d",bg:"#030d06",icon:"🔢",tag:"Every question is a step up",sym:["1","2","3","4","5","10","20","0","1"]},
+{a:"#ff6b4a",b:"#ffb020",o1:"#e8321a",o2:"#ff8a00",o3:"#ff2e63",bg:"#140806",icon:"🔥",tag:"Challenge builds strength",sym:["🔥","⚡","▲","★","Hard","!!"]},
+{a:"#ffd24a",b:"#ff9f43",o1:"#c98a00",o2:"#ff7a18",o3:"#ffe29a",bg:"#120e04",icon:"⏳",tag:"Time well spent",sym:["⏳","◷","60","30","⌛","tick","⏱"]},
+{a:"#c58bff",b:"#ff6bd6",o1:"#7a2cff",o2:"#ff3fb6",o3:"#4d7cff",bg:"#0a0516",icon:"🧩",tag:"Sharpen your mind",sym:["✧","☄","★","⚗","🧩","✺","⚛"]},
+{a:"#ffe066",b:"#3df2e0",o1:"#ffb300",o2:"#00d9c5",o3:"#ff6bd6",bg:"#0b0a12",icon:"🏆",tag:"Launch!",sym:["🏆","★","✓","🚀","A+","100"]}];
+TH.unshift(TH.splice(2,1)[0]);
+slides.forEach((s,i)=>s.classList.add("t"+i));
+slides.forEach(s=>{const h=s.querySelector("h2");const t=h.textContent;h.textContent="";t.split(" ").forEach((w,i,a)=>{const sp=document.createElement("span");sp.className="ch";sp.style.setProperty("--i",i);sp.textContent=w;h.appendChild(sp);if(i<a.length-1)h.appendChild(document.createTextNode(" "))})});
+function setTheme(n){const t=TH[n],st=document.body.style;st.setProperty("--a",t.a);st.setProperty("--b",t.b);st.setProperty("--o1",t.o1);st.setProperty("--o2",t.o2);st.setProperty("--o3",t.o3);st.setProperty("--bgc",t.bg);document.body.dataset.t=n;spawnSyms(t.sym)}
+const symEl=$("sym");
+function spawnSyms(list){
+ [...symEl.children].forEach(o=>{o.classList.add("out");setTimeout(()=>o.remove(),900)});
+ const n=innerWidth<700?9:18;
+ for(let i=0;i<n;i++){
+  const s=document.createElement("span");s.textContent=list[i%list.length];
+  s.setAttribute("role","button");s.tabIndex=0;s.setAttribute("aria-label",`Move or tap educational symbol ${s.textContent}`);
+  s.style.cssText=`left:${Math.random()*94}%;font-size:${16+Math.random()*30}px;animation-duration:${14+Math.random()*16}s;animation-delay:${-Math.random()*14}s`;
+  let startX=0,startY=0,originX=0,originY=0,moved=false;
+  s.addEventListener("pointerdown",e=>{
+   if(e.button!==undefined&&e.button!==0)return;
+   const r=s.getBoundingClientRect();startX=e.clientX;startY=e.clientY;originX=r.left;originY=r.top;moved=false;
+   s.style.left=originX+"px";s.style.top=originY+"px";s.style.bottom="auto";s.style.animation="none";s.classList.add("dragging");
+   try{s.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault();
+  });
+  s.addEventListener("pointermove",e=>{if(!s.classList.contains("dragging"))return;const dx=e.clientX-startX,dy=e.clientY-startY;if(Math.abs(dx)+Math.abs(dy)>4)moved=true;s.style.left=Math.max(0,Math.min(innerWidth-s.offsetWidth,originX+dx))+"px";s.style.top=Math.max(0,Math.min(innerHeight-s.offsetHeight,originY+dy))+"px"});
+  const endDrag=e=>{if(!s.classList.contains("dragging"))return;s.classList.remove("dragging");if(!moved){s.classList.add("tapped");setTimeout(()=>s.classList.remove("tapped"),650)}try{s.releasePointerCapture(e.pointerId)}catch(_){}};
+  s.addEventListener("pointerup",endDrag);s.addEventListener("pointercancel",endDrag);
+  s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();s.classList.add("tapped");setTimeout(()=>s.classList.remove("tapped"),650)}});
+  symEl.appendChild(s);
+ }
+}
+/* ---------- sound ---------- */
+let AC=null,soundOn=true;
+function ac(){if(!AC){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;AC=new C()}if(AC.state==="suspended")AC.resume();return AC}
+function tone(f,d=.12,type="sine",v=.06,f2=null,t0=0){const a=ac();if(!a||!soundOn)return;const o=a.createOscillator(),g=a.createGain(),t=a.currentTime+t0;o.type=type;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+d+.03)}
+const SC=[523.25,587.33,659.25,783.99,880,1046.5,1174.66,1318.5];
+function sHover(i=0){const f=SC[i%8];tone(f,.09,"sine",.04,f*1.25)}
+function sClick(i=0){const f=SC[(i+2)%8];tone(f,.2,"triangle",.08,f*1.5);tone(f*2,.3,"sine",.04,null,.06);tone(f*3,.22,"sine",.022,null,.11)}
+function fanfare(){[523.25,659.25,783.99,1046.5,1318.5].forEach((f,i)=>tone(f,.35,"triangle",.07,null,i*.11))}
+function sWhoosh(){const a=ac();if(!a||!soundOn)return;const len=Math.floor(a.sampleRate*.5),b=a.createBuffer(1,len,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*(1-i/len);const s=a.createBufferSource();s.buffer=b;const f=a.createBiquadFilter();f.type="bandpass";f.Q.value=2;const t=a.currentTime;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(3200,t+.45);const g=a.createGain();g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.09,t+.12);g.gain.exponentialRampToValueAtTime(.0001,t+.5);s.connect(f);f.connect(g);g.connect(a.destination);s.start()}
+$("soundBtn").onclick=()=>{soundOn=!soundOn;$("soundBtn").textContent=soundOn?"🔊 Sound":"🔇 Muted";if(soundOn)sClick(3)};
+/* ---------- spotlight ---------- */
+const spot=$("spot");let lt=null;
+function lightOn(el){document.querySelectorAll(".lit").forEach(x=>x.classList.remove("lit"));document.querySelectorAll(".grid.spot").forEach(x=>x.classList.remove("spot"));if(!el){spot.classList.remove("on");return}
+const s=stage.getBoundingClientRect(),r=el.getBoundingClientRect();spot.style.setProperty("--x",(r.left-s.left+r.width/2)+"px");spot.style.setProperty("--y",(r.top-s.top+r.height/2)+"px");spot.style.setProperty("--w",r.width+"px");spot.style.setProperty("--h",r.height+"px");spot.classList.add("on");el.classList.add("lit");const g=el.closest(".grid");if(g)g.classList.add("spot")}
+function defTarget(){const s=slides[cur];return s.querySelector(".choice.sel")||(cur===3?$("topic"):null)||(cur===slides.length-1?$("generate"):null)}
+function burst(x,y){const r=document.createElement("div");r.className="ring";r.style.left=x+"px";r.style.top=y+"px";document.body.appendChild(r);setTimeout(()=>r.remove(),750);for(let i=0;i<16;i++){const p=document.createElement("div");p.className="sp";const an=Math.random()*6.28,d=40+Math.random()*70;p.style.cssText=`left:${x}px;top:${y}px;color:${i%2?"var(--a)":"var(--b)"};background:currentColor;--dx:${Math.cos(an)*d}px;--dy:${Math.sin(an)*d}px`;document.body.appendChild(p);setTimeout(()=>p.remove(),850)}}
+/* ---------- navigation ---------- */
+function go(n){const prev=cur;cur=Math.max(0,Math.min(slides.length-1,Number(n)||0));slides.forEach((s,i)=>{s.classList.toggle("active",i===cur);s.classList.toggle("before",i<cur)});[...stepsEl.children].forEach((b,i)=>{b.classList.toggle("done",i<cur);b.classList.toggle("on",i===cur);b.setAttribute("aria-pressed",String(i===cur))});$("stepName").textContent=TH[cur].icon+" "+slides[cur].dataset.name+" · "+TH[cur].tag;$("stepCount").textContent=(cur+1)+" / "+slides.length;$("wPrev").style.visibility=cur===0?"hidden":"visible";$("wNext").style.display=cur===slides.length-1?"none":"inline-block";if(cur===slides.length-1)summary();setTheme(cur);if(cur!==prev)sWhoosh();lightOn(null);clearTimeout(lt);lt=setTimeout(()=>lightOn(defTarget()),780)}
+document.querySelectorAll(".grid[data-key]").forEach(g=>{const k=g.dataset.key;const mark=()=>g.querySelectorAll(".choice").forEach(c=>c.classList.toggle("sel",c.dataset.v===cfg[k]));mark();g.querySelectorAll(".choice").forEach((c,ci)=>c.onclick=e=>{cfg[k]=c.dataset.v;if(k==="language"){$("langChip").textContent=c.querySelector("b").textContent;applyUI()}mark();const r=c.getBoundingClientRect();burst(e.clientX||r.left+r.width/2,e.clientY||r.top+r.height/2);sClick(ci);lightOn(c);if(k==="tab"){["link","pdf","text"].forEach(x=>$(x+"Box").style.display=x===cfg.tab?"block":"none");setTimeout(()=>lightOn(defTarget()),50)}else setTimeout(()=>go(cur+1),700)})});
+let lastHov=null;const HOV=".choice,.btn,.option,.steps b,.toggle,#soundBtn";
+document.addEventListener("pointerover",e=>{const t=e.target.closest&&e.target.closest(HOV);if(!t||t===lastHov)return;lastHov=t;sHover([...t.parentElement.children].indexOf(t));if(t.closest("#stage")&&(t.classList.contains("choice")||t.id==="generate"))lightOn(t)});
+document.addEventListener("pointerout",e=>{const r=e.relatedTarget;if(!r||!r.closest||!r.closest(HOV))lastHov=null});
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest(".btn,.option,.steps b");if(b){sClick(3);burst(e.clientX,e.clientY)}});
+document.addEventListener("focusin",e=>{if(e.target.matches("#stage input,#stage textarea"))lightOn(e.target)});
+stage.addEventListener("pointerleave",()=>lightOn(defTarget()));
+stage.addEventListener("pointermove",e=>{const c=e.target.closest(".choice");if(!c)return;const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;c.style.setProperty("--mx",px*100+"%");c.style.setProperty("--my",py*100+"%");c.style.setProperty("--ry",(px-.5)*14+"deg");c.style.setProperty("--rx",(.5-py)*14+"deg")});
+stage.addEventListener("pointerout",e=>{const c=e.target.closest&&e.target.closest(".choice");if(c){c.style.setProperty("--rx","0deg");c.style.setProperty("--ry","0deg")}});
+addEventListener("resize",()=>lightOn(defTarget()));
+$("wNext").onclick=()=>go(cur+1);$("wPrev").onclick=()=>go(cur-1);
+document.addEventListener("keydown",e=>{if($("exam").style.display==="block"||/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;if(e.key==="ArrowRight")go(cur+1);if(e.key==="ArrowLeft")go(cur-1)});
+let tx=null;stage.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});stage.addEventListener("touchend",e=>{if(tx===null)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>60)go(cur+(d<0?1:-1));tx=null});
+go(0);
+
+const LB={
+Bangla:{lang:"bn",dir:"ltr",you:"তোমার উত্তর: ",none:"দেওয়া হয়নি",ans:"সঠিক উত্তর: ",exp:"ব্যাখ্যা: ",m:["Excellent work! এভাবেই অনুশীলন চালিয়ে যাও।","ভালো অগ্রগতি! ভুল প্রশ্নগুলোর ব্যাখ্যা দেখে আবার চেষ্টা করো।","চিন্তা নেই—ব্যাখ্যাগুলো পড়ে একই Topic আবার অনুশীলন করো।"]},
+English:{lang:"en",dir:"ltr",you:"Your answer: ",none:"Not answered",ans:"Correct answer: ",exp:"Explanation: ",m:["Excellent work! Keep practising like this.","Good progress! Review the explanations for the questions you missed and try again.","No worries — read the explanations and practise the same topic again."]},
+Hindi:{lang:"hi",dir:"ltr",you:"आपका उत्तर: ",none:"उत्तर नहीं दिया",ans:"सही उत्तर: ",exp:"व्याख्या: ",m:["बहुत बढ़िया! इसी तरह अभ्यास करते रहो।","अच्छी प्रगति! गलत प्रश्नों की व्याख्या देखकर फिर से कोशिश करो।","चिंता मत करो—व्याख्याएँ पढ़कर उसी Topic का दोबारा अभ्यास करो।"]},
+Urdu:{lang:"ur",dir:"rtl",you:"آپ کا جواب: ",none:"جواب نہیں دیا گیا",ans:"درست جواب: ",exp:"وضاحت: ",m:["شاندار! اسی طرح مشق جاری رکھو۔","اچھی پیش رفت! غلط سوالوں کی وضاحت دیکھ کر دوبارہ کوشش کرو۔","فکر نہ کرو—وضاحتیں پڑھ کر اسی Topic کی دوبارہ مشق کرو۔"]}};
+const LBL=()=>LB[cfg.language]||LB.Bangla;
+/* ---------- bilingual wizard text ---------- */
+const TR={
+"কোথা থেকে প্রশ্ন বানাবো?":["Where should the questions come from?","प्रश्न कहाँ से बनाएँ?","سوال کہاں سے بنائیں؟"],
+"কোন বিষয়?":["Which subject?","कौन सा विषय?","کون سا مضمون؟"],
+"নির্দিষ্ট Topic আছে?":["Any specific topic?","कोई खास Topic है?","کوئی خاص Topic ہے؟"],
+"কয়টি প্রশ্ন?":["How many questions?","कितने प्रश्न?","کتنے سوالات؟"],
+"কঠিনতার মাত্রা":["Difficulty level","कठिनाई का स्तर","مشکل کی سطح"],
+"কত মিনিট সময়?":["How many minutes?","कितने मिनट का समय?","کتنے منٹ کا وقت؟"],
+"প্রশ্নের ধরন":["Question type","प्रश्न का प्रकार","سوال کی قسم"],
+"সব প্রস্তুত 🚀":["All set 🚀","सब तैयार 🚀","سب تیار 🚀"],
+"ক্লাসের লিংক, PDF অথবা Transcript বেছে নাও।":["Choose a class link, PDF or transcript.","क्लास लिंक, PDF या Transcript चुनो।","کلاس لنک، PDF یا Transcript چنو۔"],
+"পরীক্ষার subject বেছে নাও।":["Pick the exam subject.","परीक्षा का subject चुनो।","امتحان کا subject چنو۔"],
+"ঐচ্ছিক। ফাঁকা রাখলে পুরো কনটেন্ট থেকে হবে।":["Optional. Leave empty to use all the content.","वैकल्पिक। खाली छोड़ने पर पूरे कंटेंट से बनेगा।","اختیاری۔ خالی چھوڑیں تو پورے مواد سے بنے گا۔"],
+"মোট MCQ সংখ্যা।":["Total number of MCQs.","कुल MCQ की संख्या।","کل MCQ کی تعداد۔"],
+"কেমন চ্যালেঞ্জ চাও?":["How tough should it be?","कितनी चुनौती चाहिए?","کتنا چیلنج چاہیے؟"],
+"টাইমার এই সময় থেকে শুরু হবে।":["The timer starts from this time.","टाइमर इसी समय से शुरू होगा।","ٹائمر اسی وقت سے شروع ہوگا۔"],
+"কোন ধাঁচের প্রশ্ন চাও?":["What style of questions?","किस तरह के प्रश्न चाहिए?","کس طرز کے سوالات چاہئیں؟"],
+"Negative marking ঠিক করে পরীক্ষা শুরু করো।":["Set negative marking and start the exam.","Negative marking तय करके परीक्षा शुरू करो।","Negative marking طے کر کے امتحان شروع کرو۔"],
+"প্রতি ভুল উত্তরে ০.২৫ নম্বর কাটা হবে। চূড়ান্ত স্কোর ০-এর নিচে যাবে না।":["If on, 1 mark is deducted for every 4 wrong answers. Off means no deduction.","चालू रहने पर हर 4 गलत उत्तर पर 1 अंक कटेगा। बंद करने पर नहीं कटेगा।","آن ہو تو ہر 4 غلط جوابات پر 1 نمبر کٹے گا۔ بند ہو تو نہیں کٹے گا۔"],
+"← পিছনে":["← Back","← पीछे","← پیچھے"],
+"পরের ধাপ →":["Next →","अगला →","اگلا →"]};
+const NAT={Bangla:"bn",English:"en",Hindi:"hi",Urdu:"ur"},TI={Hindi:1,Urdu:2};
+const BI=[...document.querySelectorAll(".slide:not(:first-child) h2,.slide:not(:first-child) .sub,.toggle small,#wPrev,#wNext")].map(el=>({el,key:el.textContent.trim().replace(/\s+/g," ")}));
+function applyUI(){const L=cfg.language;BI.forEach(({el,key})=>{const t=TR[key];if(!t)return;const h=el.tagName==="H2",nat=L==="English"?"":L==="Bangla"?key:t[TI[L]];el.textContent="";
+if(h)t[0].split(" ").forEach((w,i,a)=>{const sp=document.createElement("span");sp.className="ch";sp.style.setProperty("--i",i);sp.textContent=w;el.appendChild(sp);if(i<a.length-1)el.appendChild(document.createTextNode(" "))});else el.appendChild(document.createTextNode(t[0]));
+if(nat){if(!h)el.appendChild(document.createTextNode(" "));const n=document.createElement("span");n.className="nat";n.lang=NAT[L];n.textContent=nat;el.appendChild(n)}})}
+applyUI();
+
+/* ---------- exam ---------- */
+function timer(){
+ const safe=Math.max(0,Math.ceil(remaining));
+ $("timer").textContent=Math.floor(safe/60)+":"+String(safe%60).padStart(2,"0");
+ $("timer").classList.toggle("low",safe<=60);
+}
+function render(anim){
+ if(!exam.length||!exam[idx])return;
+ const q=exam[idx],w=$("qwrap");
+ if(anim){w.classList.remove("qin");void w.offsetWidth;w.classList.add("qin")}
+ $("qnum").textContent=`Question ${idx+1} / ${exam.length}`;
+ $("difficulty").textContent=q.d||"Standard";
+ $("question").textContent=q.q;
+ $("options").replaceChildren();
+ q.o.forEach((v,i)=>{
+  const d=document.createElement("button");d.type="button";d.className="option"+(answers[idx]===i?" selected":"");
+  d.setAttribute("aria-pressed",String(answers[idx]===i));d.setAttribute("aria-label",`Option ${"ABCD"[i]}: ${v}`);
+  const letter=document.createElement("span");letter.className="letter";letter.textContent="ABCD"[i];
+  const value=document.createElement("span");value.textContent=v;d.append(letter,value);
+  d.onclick=()=>{if(examFinished)return;answers[idx]=i;render(false)};
+  $("options").appendChild(d);
+ });
+ $("answered").textContent=Object.keys(answers).length+" answered";
+ $("bar").style.width=((idx+1)/exam.length*100)+"%";
+ $("prev").disabled=idx===0;$("next").style.display=idx===exam.length-1?"none":"inline-block";
+ $("finish").style.display=idx===exam.length-1?"inline-block":"none";timer();
+}
+$("prev").onclick=()=>{if(idx>0&&!examFinished){idx--;render(true)}};
+$("next").onclick=()=>{if(idx<exam.length-1&&!examFinished){idx++;render(true)}};
+$("finish").onclick=()=>finish("manual");
+function startExam(title){
+ if(!Array.isArray(exam)||!exam.length)throw new Error("No valid questions were received.");
+ setTheme(1);lightOn(null);negativeMarkingEnabled=$("negativeMarking").checked;answers={};idx=0;examFinished=false;
+ remaining=Math.max(60,Math.floor(Number(cfg.duration)*60)||1200);deadline=Date.now()+remaining*1000;
+ $("result").style.display="none";$("exam").style.display="block";$("examTitle").textContent=title;
+ const L=LBL();$("qwrap").lang=L.lang;$("qwrap").dir=L.dir;render(true);
+ if(clock)clearInterval(clock);
+ clock=setInterval(()=>{remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));timer();if(remaining<=0)finish("timeout")},250);
+ $("exam").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+function countUp(el,to,dec,suffix=""){const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/900);el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(dec)+suffix;if(p<1)requestAnimationFrame(f)})(t0)}
+function finish(reason="manual"){
+ if(!exam.length||examFinished)return;
+ examFinished=true;if(clock){clearInterval(clock);clock=null}
+ let c=0,w=0,u=0;
+ exam.forEach((q,i)=>{if(answers[i]===undefined)u++;else if(answers[i]===q.a)c++;else w++});
+ const ded=negativeMarkingEnabled?w*0.25:0,fs=Math.max(0,c-ded),pct=Math.round(c/exam.length*100);
+ $("result").style.display="block";$("exam").style.display="none";setTheme(8);fanfare();
+ const sc=$("score"),t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/900),e=1-Math.pow(1-p,3);sc.textContent=(fs*e).toFixed(2)+"/"+exam.length;if(p<1)requestAnimationFrame(f)})(t0);
+ countUp($("accuracy"),pct,0,"%");countUp($("correct"),c,0);countUp($("wrong"),w,0);countUp($("unanswered"),u,0);countUp($("deduction"),ded,2);
+ const L=LBL();$("resultMsg").textContent=reason==="timeout"?(cfg.language==="English"?"Time is up. Your exam was submitted automatically.":"সময় শেষ। তোমার পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হয়েছে।"):pct>=80?L.m[0]:pct>=60?L.m[1]:L.m[2];
+ $("reviews").replaceChildren();$("reviews").lang=L.lang;$("reviews").dir=L.dir;
+ exam.forEach((q,i)=>{
+  const ok=answers[i]===q.a,box=document.createElement("div");box.className="review";
+  const h=document.createElement("h3");h.textContent=`${i+1}. ${q.q}`;
+  const st=document.createElement("div");st.className=ok?"correct":"wrong";st.textContent=ok?"✓ Correct":(answers[i]===undefined?"— Not answered":"✕ Incorrect");
+  const y=document.createElement("div");y.textContent=L.you+(answers[i]===undefined?L.none:q.o[answers[i]]);
+  const r=document.createElement("div"),rb=document.createElement("b");rb.textContent=L.ans;r.append(rb,document.createTextNode(q.o[q.a]));
+  const ex=document.createElement("div");ex.className="explain";ex.textContent=L.exp+(q.e||"No explanation was provided.");
+  box.append(h,st,y,r,ex);$("reviews").appendChild(box);
+ });
+ $("result").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+
+/* ---------- AI generate (backend logic unchanged) ---------- */
 async function generateWithAI(){
- const btn=$("generate");btn.disabled=true;btn.textContent="✦ AI is creating your exam…";
+ const btn=$("generate"),original=btn.textContent;btn.disabled=true;btn.textContent="✦ AI is creating your exam…";
+ const controller=new AbortController(),requestTimer=setTimeout(()=>controller.abort(),120000);
  try{
   let response;
-  const common={subject:$("subject").value,language:$("language").value,topic:$("topic").value,count:+$("count").value,level:$("level").value,qtype:$("qtype").value};
-  if(activeTab==="text"){
-   const notes=$("notes").value.trim();if(!notes){alert("আগে class transcript বা notes paste করো।");return}
-   response=await fetch("/api/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...common,content:notes})});
-  }else if(activeTab==="pdf"){
-   const file=$("pdfFile").files[0];if(!file){alert("একটি PDF নির্বাচন করো।");return}
+  const common={subject:cfg.subject,language:cfg.language,topic:$("topic").value.trim(),count:Number(cfg.count),level:cfg.level,qtype:cfg.qtype};
+  if(cfg.tab==="text"){
+   const notes=$("notes").value.trim();if(!notes){alert("আগে class transcript বা notes paste করো।");go(1);return}
+   if(notes.length>100000){alert("Notes অনেক বড়। অনুগ্রহ করে 100,000 characters-এর মধ্যে দাও।");go(1);return}
+   response=await fetch("/api/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...common,content:notes}),signal:controller.signal});
+  }else if(cfg.tab==="pdf"){
+   const file=$("pdfFile").files[0];if(!file){alert("একটি PDF নির্বাচন করো।");go(1);return}
+   if(file.type!=="application/pdf"&&!file.name.toLowerCase().endsWith(".pdf")){alert("শুধুমাত্র PDF ফাইল নির্বাচন করো।");go(1);return}
+   if(file.size>15*1024*1024){alert("PDF ফাইলের আকার 15 MB-এর কম হতে হবে।");go(1);return}
    const data=new FormData();Object.entries(common).forEach(([k,v])=>data.append(k,String(v)));data.append("file",file);
-   response=await fetch("/api/generate-pdf",{method:"POST",body:data});
+   response=await fetch("/api/generate-pdf",{method:"POST",body:data,signal:controller.signal});
   }else{
-   const url=$("classUrl").value.trim();if(!url){alert("Class link দাও অথবা Transcript / PDF mode বেছে নাও।");return}
-   alert("এই build-এ YouTube/Facebook/Google Drive URL connector এখনো যুক্ত হয়নি। আপাতত ওই class-এর transcript copy করে Transcript / Notes tab-এ paste করো।");return;
+   const url=$("classUrl").value.trim();if(!url){alert("Class link দাও অথবা Transcript / Notes mode বেছে নাও।");go(1);return}
+   let parsed;try{parsed=new URL(url)}catch{alert("সঠিক URL দাও।");return}
+   if(!["http:","https:"].includes(parsed.protocol)){alert("শুধুমাত্র http/https link ব্যবহার করা যাবে।");return}
+   alert("এই build-এ YouTube/Facebook/Google Drive URL connector এখনো যুক্ত হয়নি। আপাতত ওই class-এর transcript copy করে Transcript / Notes অপশনে paste করো।");go(1);return;
   }
-  const payload=await response.json();if(!response.ok)throw new Error(payload.error||"AI request failed");
-  exam=payload.questions;negativeMarkingEnabled=$("negativeMarking").checked;answers={};idx=0;remaining=+$("duration").value*60;$("result").style.display="none";$("exam").style.display="block";$("examTitle").textContent=$("subject").value+" · "+($("topic").value||"AI Practice Exam");render();if(clock)clearInterval(clock);clock=setInterval(()=>{remaining--;timer();if(remaining<=0)finish()},1000);$("exam").scrollIntoView({behavior:"smooth"});
- }catch(err){alert("AI exam তৈরি করা যায়নি: "+err.message+"\nBackend চালু আছে এবং OPENAI_API_KEY সেট করা আছে কি না দেখো।")}finally{btn.disabled=false;btn.textContent="✦ Generate a new practice exam"}
+  const contentType=response.headers.get("content-type")||"";
+  let payload;if(contentType.includes("application/json"))payload=await response.json();else throw new Error("Server did not return JSON. Please check the backend route.");
+  if(!response.ok)throw new Error(payload.error||`AI request failed (${response.status})`);
+  if(!Array.isArray(payload.questions)||payload.questions.length===0)throw new Error("AI returned no questions. Try again with clearer notes.");
+  const normalized=payload.questions.map((q,i)=>{
+   if(!q||typeof q.q!=="string"||!q.q.trim()||!Array.isArray(q.o)||q.o.length!==4||q.o.some(v=>typeof v!=="string"||!v.trim())||!Number.isInteger(q.a)||q.a<0||q.a>3)throw new Error(`Question ${i+1} has an invalid format. Please generate again.`);
+   return {q:q.q.trim(),o:q.o.map(v=>v.trim()),a:q.a,d:typeof q.d==="string"?q.d:"Standard",e:typeof q.e==="string"?q.e:""};
+  });
+  exam=normalized;startExam(cfg.subject+" · "+($("topic").value.trim()||"AI Practice Exam"));
+ }catch(err){
+  const message=err.name==="AbortError"?"Request timed out after 2 minutes. Please try again.":err.message;
+  alert("AI exam তৈরি করা যায়নি: "+message+"\nBackend চালু আছে এবং OPENAI_API_KEY সেট করা আছে কি না দেখো।");
+ }finally{clearTimeout(requestTimer);btn.disabled=false;btn.textContent=original}
 }
 $("generate").onclick=generateWithAI;
-$("retry").onclick=()=>{generateWithAI()};
+$("retry").onclick=()=>{$("result").style.display="none";$("wizard").scrollIntoView({behavior:"smooth"});go(slides.length-1)};
+
+/* ---------- particle background ---------- */
+(function(){const c=$("fx"),x=c.getContext("2d");let W,H,P=[],fr=0,col="61,242,224";function rs(){W=c.width=innerWidth;H=c.height=innerHeight;P=Array.from({length:Math.min(70,Math.floor(W/18))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+rs();addEventListener("resize",rs);if(matchMedia("(prefers-reduced-motion:reduce)").matches||!x)return;
+(function f(){if(document.hidden){requestAnimationFrame(f);return}x.clearRect(0,0,W,H);if((fr++)%12===0){const m=getComputedStyle(document.body).getPropertyValue("--a").match(/[\d.]+/g);if(m)col=m.slice(0,3).join(",")}P.forEach((p,i)=>{p.x=(p.x+p.vx+W)%W;p.y=(p.y+p.vy+H)%H;x.fillStyle="rgba("+col+",.7)";x.beginPath();x.arc(p.x,p.y,1.4,0,7);x.fill();for(let j=i+1;j<P.length;j++){const q=P[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<120){x.strokeStyle="rgba("+col+","+(.22*(1-d/120))+")";x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}});requestAnimationFrame(f)})()})();
 </script></body></html>
